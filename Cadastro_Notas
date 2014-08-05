@@ -15,7 +15,7 @@ titulo = StringVar()
 Label(root, textvariable = titulo, font = ("Helvetica",15)).pack()
 titulo.set("Sistema de Cadastro de Notas")
 
-Label(root, text = "Diciplina", font = ("Helvetica",15)).pack()
+Label(root, text = "Disciplina", font = ("Helvetica",15)).pack()
 disciplina = Entry(root)
 disciplina.pack()
 
