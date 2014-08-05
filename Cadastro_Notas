@@ -4,7 +4,7 @@ from Tkinter import *
 
 def SalvarDados():
     arq = open("Notas.txt","w")
-    arq.write("Diciplina: %s \n"%(diciplina.get()))
+    arq.write("Disciplina: %s \n"%(disciplina.get()))
     arq.write("Nota: %s \n"%(nota.get()))
     arq.write("Verificação: %s \n"%(verificacao.get()))
     print "Dados armazenados com sucesso !!"
@@ -16,8 +16,8 @@ Label(root, textvariable = titulo, font = ("Helvetica",15)).pack()
 titulo.set("Sistema de Cadastro de Notas")
 
 Label(root, text = "Diciplina", font = ("Helvetica",15)).pack()
-diciplina = Entry(root)
-diciplina.pack()
+disciplina = Entry(root)
+disciplina.pack()
 
 Label(root, text = "Nota", font = ("Helvetica",15)).pack()
 nota = Entry(root)
