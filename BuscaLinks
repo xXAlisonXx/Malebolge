@@ -34,17 +34,18 @@ for i in range(0,len(x)):
                                 link+=x[i+6]
                                 #print x[i+6]
                                 cont = 7
-                                while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!= "?":
+                                while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!= "?" and x[i+cont]!= " " and x[i+cont]!= "'":
                                     link += x[i+cont]
                                     cont+=1
                                 if link not in lista_links1:
                                     lista_links1.append(link)
                                     
-
+num = 1
 lista_links2 = []
 for z in lista_links1:
+    arq.write("%dº Link: %s\n"%(num, z))
+    num+=1
     print z
-
     url2 = z
     pagina2 = urllib.urlopen(url2)
     x = pagina2.read()
@@ -72,14 +73,14 @@ for z in lista_links1:
                                     link2+=x[i+6]
                                     #print x[i+6]
                                     cont = 7
-                                    while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!="?":
+                                    while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!="?" and x[i+cont]!= " " and x[i+cont]!= "'":
                                         link2 += x[i+cont]
                                         cont+=1
-                                    if link2 not in lista_links2:
+                                    if link2 not in lista_links2 and link2 not in lista_links1:
                                         lista_links2.append(link2)
     
 
-num = 1
+
 for i in lista_links2:
     arq.write("%dº Link: %s\n"%(num, i))
     num+=1
