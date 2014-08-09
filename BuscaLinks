@@ -1,0 +1,89 @@
+import urllib 
+
+url = "http://www.url.com.br"
+
+pagina = urllib.urlopen(url)
+
+lista_links1 = []
+
+arq = open("Links.doc","r+")
+
+x = pagina.read()
+
+for i in range(0,len(x)):
+    link = ""
+    if x[i] == "h":
+        link += x[i]
+        #print x[i]
+        if x[i+1] == "t":
+            link += x[i+1]
+            #print x[i+1]
+            if x[i+2] == "t":
+                link+=x[i+2]
+                #print x[i+2]
+                if x[i+3] == "p":
+                    link+=x[i+3]
+                    #print x[i+3]
+                    if x[i+4] == ":":
+                        link+=x[i+4]
+                        #print x[i+4]
+                        if x[i+5]=="/":
+                            link+=x[i+5]
+                            #print x[i+5]
+                            if x[i+6]=="/":
+                                link+=x[i+6]
+                                #print x[i+6]
+                                cont = 7
+                                while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!= "?":
+                                    link += x[i+cont]
+                                    cont+=1
+                                if link not in lista_links1:
+                                    lista_links1.append(link)
+                                    
+
+lista_links2 = []
+for z in lista_links1:
+    print z
+
+    url2 = z
+    pagina2 = urllib.urlopen(url2)
+    x = pagina2.read()
+    for i in range(0,len(x)):
+        link2 = ""
+        if x[i] == "h":
+            link2 += x[i]
+            #print x[i]
+            if x[i+1] == "t":
+                link2 += x[i+1]
+                #print x[i+1]
+                if x[i+2] == "t":
+                    link2+=x[i+2]
+                    #print x[i+2]
+                    if x[i+3] == "p":
+                        link2+=x[i+3]
+                        #print x[i+3]
+                        if x[i+4] == ":":
+                            link2+=x[i+4]
+                            #print x[i+4]
+                            if x[i+5]=="/":
+                                link2+=x[i+5]
+                                #print x[i+5]
+                                if x[i+6]=="/":
+                                    link2+=x[i+6]
+                                    #print x[i+6]
+                                    cont = 7
+                                    while x[i+cont]!='"' and x[i+cont]!="/" and x[i+cont]!="?":
+                                        link2 += x[i+cont]
+                                        cont+=1
+                                    if link2 not in lista_links2:
+                                        lista_links2.append(link2)
+    
+
+num = 1
+for i in lista_links2:
+    arq.write("%dº Link: %s\n"%(num, i))
+    num+=1
+arq.close()
+
+for t in lista_links2:
+    print t
